@@ -18,7 +18,6 @@ public class Enemy extends AttackAndDefences {
     }
 
     public void setDamage(int damage) {
-
         this.damage = damage;
     }
 
@@ -29,7 +28,7 @@ public class Enemy extends AttackAndDefences {
     public void setDefence(int defence) {
         this.defense = defense;
     }
-    //wow, I made some changes
+
     public void spawnChance(){
 
     }

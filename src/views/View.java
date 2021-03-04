@@ -15,7 +15,7 @@ public class View {
     public void setDifficulty(){
         //Create menu for difficulty here
         //This should be the first menu to show up
-        System.out.println("Before we start what type of challenge are you looking for\n");
+        System.out.println("Before we start, what type of challenge are you looking for\n");
         int difficult = ConsoleIO.promptForMenuSelection(new String[]{"Easy","Medium","Hard"},true);
         switch(difficult){
             case 1:
