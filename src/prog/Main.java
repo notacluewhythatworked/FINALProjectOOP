@@ -1,8 +1,11 @@
 package prog;
 
+import views.View;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        View bob = new View();
+    bob.setDifficulty();
     }
 }
