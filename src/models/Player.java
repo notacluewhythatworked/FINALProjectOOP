@@ -23,11 +23,11 @@ public class Player extends AttackAndDefences{
         this.attack = attack;
     }
 
-//    public int getDefence() {
-//        return defence;
+//    public int getDefense() {
+//        return defense;
 //    }
 
-    public void setDefence(int defense) {
+    public void setDefense(int defense) {
         getRng(1,20);
         this.defense = defense;
     }

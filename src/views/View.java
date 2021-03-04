@@ -8,11 +8,12 @@ public class View {
     public Player hero = new Player();
     public Items bag = new Items();
 
-    private void mainMenu(){
-        //Create menu here
+    public void mainMenu(){
+        setDifficulty();
+        movement();
     }
 
-    public void setDifficulty(){
+    private void setDifficulty(){
         //Create menu for difficulty here
         //This should be the first menu to show up
         System.out.println("Before we start, what type of challenge are you looking for\n");
@@ -20,21 +21,18 @@ public class View {
         switch(difficult){
             case 1:
                 //increase enemy damage
-                mainMenu();
                 break;
             case 2:
                 //increase enemy damage
-                mainMenu();
                 break;
             case 3:
                 //increase enemy damage
-                mainMenu();
                 break;
         }
     }
 
     private void movement(){
-
+        //inform the player where they are currently and prompt them with possible moves.
     }
 
     private void combat(){
