@@ -3,7 +3,7 @@ package models;
 public class Enemy extends AttackAndDefences {
     private int health;
     private int damage;
-    private int defence;
+    private int defense;
 
     public int getHealth() {
         return health;
@@ -23,11 +23,11 @@ public class Enemy extends AttackAndDefences {
     }
 
     public int getDefence() {
-        return defence;
+        return defense;
     }
 
     public void setDefence(int defence) {
-        this.defence = defence;
+        this.defense = defense;
     }
     //wow, I made some changes
     public void spawnChance(){
