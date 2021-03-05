@@ -43,8 +43,8 @@ public class View {
     }
 
     private void combat(){
-        System.out.println("enemy detected do you want to\n");
-        int selection = ConsoleIO.promptForMenuSelection(new String[]{"attack","check/use item","flee"},true);
+        System.out.println("Enemy detected. What would you like to do?\n");
+        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Use Item","Flee"},true);
         switch(selection){
             case 1:
                 //Set player attack
