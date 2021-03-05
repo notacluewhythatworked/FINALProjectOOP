@@ -1,6 +1,6 @@
 package models;
 
-public class Enemy extends AttackAndDefences {
+public class Enemy extends AttackAndDefenses {
     private int health;
     private int damage;
     private int defense;
@@ -21,11 +21,11 @@ public class Enemy extends AttackAndDefences {
         this.damage = damage;
     }
 
-    public int getDefence() {
+    public int getDefense() {
         return defense;
     }
 
-    public void setDefence(int defense) {
+    public void setDefense(int defense) {
         this.defense = defense;
     }
 
