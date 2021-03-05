@@ -2,7 +2,7 @@ package models;
 
 import java.util.Random;
 
-public class AttackAndDefences {
+public class AttackAndDefenses {
 
     public Random rng = new Random();
 
