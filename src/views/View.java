@@ -2,11 +2,13 @@ package views;
 
 import lib.ConsoleIO;
 import models.Items;
+import models.Map;
 import models.Player;
 
 public class View {
     public Player hero = new Player();
     public Items bag = new Items();
+    public Map bigBad = new Map();
 
     public void mainMenu(){
         setDifficulty();
@@ -46,7 +48,9 @@ public class View {
                 bag.healthItems();
                 break;
             case 3:
+                //if user is in the boss room they will lose the ability to flee
                 movement();
+
                 break;
 
         }
