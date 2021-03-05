@@ -16,10 +16,9 @@ public class View {
     }
 
     private void setDifficulty(){
-        //Create menu for difficulty here
-        //This should be the first menu to show up
         System.out.println("Before we start, what type of challenge are you looking for\n");
         int difficult = ConsoleIO.promptForMenuSelection(new String[]{"Easy","Medium","Hard"},true);
+        hero.setHealthPoints(100);
         switch(difficult){
             case 1:
                 enemy.setDamage(25);
