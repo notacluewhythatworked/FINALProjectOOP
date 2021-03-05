@@ -25,7 +25,7 @@ public class Enemy extends AttackAndDefences {
         return defense;
     }
 
-    public void setDefence(int defence) {
+    public void setDefence(int defense) {
         this.defense = defense;
     }
 
