@@ -18,7 +18,7 @@ public class Map {
     }
 
     public void bossRoom(){
-        System.out.println("This is the boss room get ready for a fight");
+        System.out.println("This is the boss room. Get ready for a fight");
 
     }
 }
