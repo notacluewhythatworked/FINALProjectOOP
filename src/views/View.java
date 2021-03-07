@@ -3,42 +3,50 @@ package views;
 import lib.ConsoleIO;
 import models.Enemy;
 import models.Items;
+import models.Map;
 import models.Player;
 
 public class View {
     public Player hero = new Player();
     public Items bag = new Items();
     public Enemy enemy = new Enemy();
+    public Map map = new Map();
+    private int difficult = 1;
 
     public void mainMenu(){
         setDifficulty();
+        map.startingRoom();
         movement();
     }
 
     private void setDifficulty(){
-        System.out.println("Before we start, what type of challenge are you looking for\n");
-        int difficult = ConsoleIO.promptForMenuSelection(new String[]{"Easy","Medium","Hard"},true);
+        System.out.println("Before we start, what type of challenge are you looking for?\n");
+        difficult = ConsoleIO.promptForMenuSelection(new String[]{"Easy","Medium","Hard"},true);
         hero.setHealthPoints(100);
         switch(difficult){
             case 1:
                 enemy.setDamage(25);
-                enemy.setHealth(30); //PLACEHOLDER VALUE
+                enemy.setHealth(50); //PLACEHOLDER VALUE
                 enemy.setDefense(25); //PLACEHOLDER VALUE
+                hero.setAttack(20); //PLACEHOLDER VALUE
                 break;
             case 2:
                 enemy.setDamage(50);
-                enemy.setHealth(40); //PLACEHOLDER VALUE
+                enemy.setHealth(75); //PLACEHOLDER VALUE
                 enemy.setDefense(50); //PLACEHOLDER VALUE
+                hero.setAttack(25); //PLACEHOLDER VALUE
                 break;
             case 3:
                 enemy.setDamage(75);
-                enemy.setHealth(50); //PLACEHOLDER VALUE
+                enemy.setHealth(100); //PLACEHOLDER VALUE
                 enemy.setDefense(75); //PLACEHOLDER VALUE
+                hero.setAttack(30); //PLACEHOLDER VALUE
                 break;
         }
     }
 
     private void movement(){
+        enemy.spawnChance();
         //inform the player where they are currently and prompt them with possible moves.
     }
 
