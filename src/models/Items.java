@@ -2,6 +2,7 @@ package models;
 
 public class Items {
     public void healthItems() {
+        int healthPotion = 0;
 
 
     }
