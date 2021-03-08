@@ -55,7 +55,7 @@ public class View {
         int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Use Item","Flee"},true);
         switch(selection){
             case 1:
-                //Set player attack
+                hero.setAttack(difficult);
                 movement();
                 break;
             case 2:
