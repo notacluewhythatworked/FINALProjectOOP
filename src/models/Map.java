@@ -19,8 +19,8 @@ public class Map {
 
     }
 
-    public void healingFountain(){
-        int timesUsed = 3;
+    public void healingFountain(int difficulty){
+        int timesUsed = difficulty;
         if (timesUsed != 0){
             //What happens in the healing fountain
             //the player is healed to full - phil
