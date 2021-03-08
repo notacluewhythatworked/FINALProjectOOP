@@ -15,7 +15,7 @@ public class Map {
 
     public void commonRoom(){
         System.out.println("You enter a common room");
-        grunt.spawnChance();
+
 
     }
 
