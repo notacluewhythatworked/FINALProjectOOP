@@ -25,22 +25,28 @@ public class View {
         hero.setHealthPoints(100);
         switch(difficult){
             case 1:
+                //easy
                 enemy.setDamage(25);
                 enemy.setHealth(50); //PLACEHOLDER VALUE
                 enemy.setDefense(25); //PLACEHOLDER VALUE
                 hero.setAttack(20); //PLACEHOLDER VALUE
+                map.healingFountain(1);
                 break;
             case 2:
+                //medium
                 enemy.setDamage(50);
                 enemy.setHealth(75); //PLACEHOLDER VALUE
                 enemy.setDefense(50); //PLACEHOLDER VALUE
                 hero.setAttack(25); //PLACEHOLDER VALUE
+                map.healingFountain(2);
                 break;
             case 3:
+                //hard
                 enemy.setDamage(75);
                 enemy.setHealth(100); //PLACEHOLDER VALUE
                 enemy.setDefense(75); //PLACEHOLDER VALUE
                 hero.setAttack(30); //PLACEHOLDER VALUE
+                map.healingFountain(3);
                 break;
         }
     }
