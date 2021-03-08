@@ -6,8 +6,8 @@ public class Enemy extends AttackAndDefenses {
     private int health;
     private int damage;
     private int defense;
-    private Map grounds = new Map();
-    private View attacka = new View();
+
+
 
     public int getHealth() {
         return health;
@@ -34,6 +34,8 @@ public class Enemy extends AttackAndDefenses {
     }
 
     public void spawnChance(){
+        View attacka = new View();
+        Map grounds = new Map();
         int chance = getRng(1,4);
         if(chance < 4){
             //Enemy does not spawn

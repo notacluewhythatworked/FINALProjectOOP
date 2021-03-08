@@ -5,6 +5,7 @@ import models.Enemy;
 import models.Items;
 import models.Map;
 import models.Player;
+import movement.PlayerMovement;
 
 public class View {
     public Player hero = new Player();
