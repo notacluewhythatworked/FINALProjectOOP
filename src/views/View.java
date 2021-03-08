@@ -56,12 +56,12 @@ public class View {
         //inform the player where they are currently and prompt them with possible moves.
     }
 
-    private void combat(){
+    public void combat(){
         System.out.println("Enemy detected. What would you like to do?\n");
         int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Use Item","Flee"},true);
         switch(selection){
             case 1:
-                //Set player attack
+                hero.setAttack(difficult);
                 movement();
                 break;
             case 2:

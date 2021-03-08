@@ -3,6 +3,7 @@ package models;
 import lib.ConsoleIO;
 
 public class Map {
+    private Enemy grunt = new Enemy();
 
     private String map[][] = new String[3][3];
 
@@ -13,6 +14,8 @@ public class Map {
     }
 
     public void commonRoom(){
+        System.out.println("You enter a common room");
+
 
     }
 
@@ -20,6 +23,7 @@ public class Map {
         int timesUsed = difficulty;
         if (timesUsed != 0){
             //What happens in the healing fountain
+            //the player is healed to full - phil
             timesUsed--;
         } else {
             System.out.println("Unfortunately, you've used the healing fountain too many times. Good luck out there.");
