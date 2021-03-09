@@ -20,12 +20,15 @@ public class Map {
         this.map = new ArrayList<Room>();
         List<String> commands = new ArrayList<>(Arrays.asList("1", "2", "3", "n", "s", "e", "w"));
         //                      Room name               description                  N           S           E           W
-        //
-        /* index 1*/map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        /* index 2*/map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        /* index 3*/map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        /* index 4*/map.add(new Room("Miniboss Room", "", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        /* index 5*/map.add(new Room("Boss Room", "The final boss. Are you ready for this?", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 0 */map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, Direction.NOEXIT, 2, 1));
+        /* index 1 */map.add(new Room("", "", Direction.NOEXIT, 5, 0, Direction.NOEXIT));
+        /* index 2 */map.add(new Room("", "", Direction.NOEXIT, Direction.NOEXIT, 3, 0));
+        /* index 3 */map.add(new Room("", "", Direction.NOEXIT, 4, Direction.NOEXIT, 2));
+        /* index 4 */map.add(new Room("Healing Fountain", "Restore your health and take a break", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 5 */map.add(new Room("", "", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 6 */map.add(new Room("Miniboss Room", "", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 7 */map.add(new Room("Boss Room", "The final boss. Are you ready for this?", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 8 */map.add(new Room("", "The final boss. Are you ready for this?", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
         playerMovement = new PlayerMovement("player", "you!", map.get(0));
     }
 
