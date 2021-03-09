@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Map {
-//    private Enemy grunt = new Enemy();
-//    private String map2[][] = new String[3][3];
+    private Enemy grunt = new Enemy();
+    private String map2[][] = new String[3][3];
     private ArrayList<Room> map;
-    private PlayerMovement playerMovement = new PlayerMovement();
+    private PlayerMovement playerMovement;
     private Player playerStats = new Player();
 
     public void startup(){
@@ -59,7 +59,7 @@ public class Map {
     }
 
     public String playerLocation(){
-        return "You are currently in the " + " room.";
+        return "You are currently in the " + playerMovement.getRoom() + " room.";
     }
 
     int moveTo (PlayerMovement playerMovement, Direction direction){
