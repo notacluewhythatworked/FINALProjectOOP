@@ -54,7 +54,16 @@ public class View {
 
     private void movement(){
 //        map.updateOutput();
-        enemy.spawnChance();
+        switch(enemy.spawnChance()){
+            case 0:
+                System.out.println("Looks like this room is empty.");
+                map.commonRoom();
+                break;
+            case 1:
+                combat();
+                break;
+        }
+
 
     }
 

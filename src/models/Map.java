@@ -75,6 +75,7 @@ public class Map {
         switch (direction){
             case NORTH:
                 exit = r.getN();
+
                 break;
             case SOUTH:
                 exit = r.getS();
