@@ -1,9 +1,13 @@
 package models;
 
+import views.View;
+
 public class Enemy extends AttackAndDefenses {
     private int health;
     private int damage;
     private int defense;
+
+
 
     public int getHealth() {
         return health;
@@ -30,6 +34,19 @@ public class Enemy extends AttackAndDefenses {
     }
 
     public void spawnChance(){
+        View attacka = new View();
+        Map grounds = new Map();
+        int chance = getRng(1,4);
+        if(chance < 4){
+            //Enemy does not spawn
+            System.out.println("Looks like this room is empty.");
+            grounds.commonRoom();
+
+        } else {
+            System.out.println("Uh oh. There's an enemy in here.");
+            attacka.combat();
+            //Enemy spawns
+        }
 
     }
 }
