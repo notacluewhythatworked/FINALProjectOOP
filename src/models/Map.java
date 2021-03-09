@@ -93,7 +93,7 @@ public class Map {
     }
 
     public String processCommand(){
-
+        return "";
     }
 
     public void movePlayerTo(PlayerMovement playerMovement, Room room){
