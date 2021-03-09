@@ -20,6 +20,10 @@ public class Map {
         this.map = new ArrayList<Room>();
         List<String> commands = new ArrayList<>(Arrays.asList("1", "2", "3", "n", "s", "e", "w"));
         map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        map.add(new Room("Miniboss Room", "", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        map.add(new Room("Boss Room", "The final boss. Are you ready for this?", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
         playerMovement = new PlayerMovement("player", "you!", map.get(0));
     }
 
