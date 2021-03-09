@@ -53,7 +53,7 @@ public class View {
     }
 
     private void movement(){
-        map.updateOutput();
+//        map.updateOutput();
         enemy.spawnChance();
     }
 

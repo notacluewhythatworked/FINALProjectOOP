@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Map {
     private Enemy grunt = new Enemy();
-    private String map2[][] = new String[3][3];
     private ArrayList<Room> map;
     private PlayerMovement playerMovement;
     private Player playerStats = new Player();
@@ -22,14 +21,14 @@ public class Map {
         //                      Room name               description                  N           S           E           W
         //Direction.NOEXIT means that you cannot exit the room going that particular way
         /* index 0 */map.add(new Room("Starting Room", "Your starting point", Direction.NOEXIT, Direction.NOEXIT, 2, 1));
-        /* index 1 */map.add(new Room("", "", Direction.NOEXIT, 5, 0, Direction.NOEXIT));
-        /* index 2 */map.add(new Room("", "", Direction.NOEXIT, Direction.NOEXIT, 3, 0));
-        /* index 3 */map.add(new Room("", "", Direction.NOEXIT, 4, Direction.NOEXIT, 2));
+        /* index 1 */map.add(new Room("ROOM 1", "", Direction.NOEXIT, 5, 0, Direction.NOEXIT));
+        /* index 2 */map.add(new Room("ROOM 2", "", Direction.NOEXIT, Direction.NOEXIT, 3, 0));
+        /* index 3 */map.add(new Room("ROOM 3", "", Direction.NOEXIT, 4, Direction.NOEXIT, 2));
         /* index 4 */map.add(new Room("Healing Fountain", "Restore your health and take a break", 3, Direction.NOEXIT, Direction.NOEXIT, Direction.NOEXIT));
-        /* index 5 */map.add(new Room("", "", 1, 6, Direction.NOEXIT, Direction.NOEXIT));
+        /* index 5 */map.add(new Room("ROOM 5", "", 1, 6, Direction.NOEXIT, Direction.NOEXIT));
         /* index 6 */map.add(new Room("Miniboss Room", "", 5, Direction.NOEXIT, 7, 8));
         /* index 7 */map.add(new Room("Boss Room", "The final boss. Are you ready for this?", Direction.NOEXIT, Direction.NOEXIT, Direction.NOEXIT, 6));
-        /* index 8 */map.add(new Room("", "", Direction.NOEXIT, Direction.NOEXIT, 6, Direction.NOEXIT));
+        /* index 8 */map.add(new Room("ROOM 8", "", Direction.NOEXIT, Direction.NOEXIT, 6, Direction.NOEXIT));
         playerMovement = new PlayerMovement("player", "you!", map.get(0));
     }
 
@@ -38,10 +37,12 @@ public class Map {
         System.out.println("\nWelcome to your doom.");
         System.out.println("Which way would you like to move?\n");
         ConsoleIO.promptForMenuSelection(new String[]{"North", "South", "East", "West"}, false);
+
     }
 
     public void commonRoom(){
         System.out.println("You enter a common room");
+
     }
 
     public void healingFountain(int difficulty){
@@ -62,11 +63,8 @@ public class Map {
 
     }
 
-    void movePlayerTo(PlayerMovement playerMovement, Room room){
-        playerMovement.setRoom(room);
-    }
 
-    public int moveTo (PlayerMovement playerMovement, Direction direction){
+    public int moveTo(PlayerMovement playerMovement, Direction direction){
         //return: a number representing the room the player moved to or NOEXIT
         Room r = playerMovement.getRoom();
         int exit;
@@ -85,13 +83,41 @@ public class Map {
                 exit = r.getW();
                 break;
             default:
-                exit = Direction.NOEXIT;
+                exit = Direction.NOEXIT; //returns an error message and keeps the player in the same room
                 break;
         }
         if (exit != Direction.NOEXIT){
             movePlayerTo(playerMovement, map.get(exit));
         }
         return exit;
+    }
+
+    public String processCommand(){
+
+    }
+
+    public void movePlayerTo(PlayerMovement playerMovement, Room room){
+        playerMovement.setRoom(room);
+    }
+
+    public int movePlayerTo(Direction direction){
+        return moveTo(playerMovement, direction);
+    }
+
+    private void goN(){
+        updateOutput(movePlayerTo(Direction.NORTH));
+    }
+
+    private void goS(){
+        updateOutput(movePlayerTo(Direction.SOUTH));
+    }
+
+    private void goE(){
+        updateOutput(movePlayerTo(Direction.EAST));
+    }
+
+    private void goW(){
+        updateOutput(movePlayerTo(Direction.WEST));
     }
 
     public void updateOutput(int roomNumber){
