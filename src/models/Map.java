@@ -19,11 +19,13 @@ public class Map {
     public void startup(){
         this.map = new ArrayList<Room>();
         List<String> commands = new ArrayList<>(Arrays.asList("1", "2", "3", "n", "s", "e", "w"));
-        map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        map.add(new Room("Miniboss Room", "", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        map.add(new Room("Boss Room", "The final boss. Are you ready for this?", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        //                      Room name               description                  N           S           E           W
+        //
+        /* index 1*/map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 2*/map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 3*/map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 4*/map.add(new Room("Miniboss Room", "", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
+        /* index 5*/map.add(new Room("Boss Room", "The final boss. Are you ready for this?", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
         playerMovement = new PlayerMovement("player", "you!", map.get(0));
     }
 
@@ -62,6 +64,10 @@ public class Map {
         return "You are currently in the " + " room.";
     }
 
+    void movePlayerTo(PlayerMovement playerMovement, Room room){
+        playerMovement.setRoom(room);
+    }
+
     int moveTo (PlayerMovement playerMovement, Direction direction){
         //return: a number representing the room the player moved to or NOEXIT
         Room r = playerMovement.getRoom();
@@ -84,7 +90,21 @@ public class Map {
                 exit = Direction.NOEXIT;
                 break;
         }
+        if (exit != Direction.NOEXIT){
+            movePlayerTo(playerMovement, map.get(exit));
+        }
         return exit;
+    }
+
+    void updateOutput(int roomNumber){
+        String s;
+        if (roomNumber == Direction.NOEXIT){
+            s = "That is not an exit. Please try another direction.";
+        } else {
+            Room r = playerMovement.getRoom();
+            s = "You are currently in the " + r.getName() + ". ";
+        }
+        System.out.println(s);
     }
 
 //    public void mapView() {
