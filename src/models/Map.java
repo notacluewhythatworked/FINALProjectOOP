@@ -14,7 +14,7 @@ public class Map {
 //    private String map2[][] = new String[3][3];
     private ArrayList<Room> map;
     private PlayerMovement playerMovement;
-    private Player playerStats;
+    private Player playerStats = new Player();
 
     public void startup(){
         this.map = new ArrayList<Room>();
