@@ -41,11 +41,14 @@ public class Map {
     }
 
     public void commonRoom(){
+//        moveTo(I dont know what info to input in here);
         System.out.println("You enter a common room");
+        System.out.println("lets move out\n");
 
     }
 
     public void healingFountain(int difficulty){
+        //moveTo(put info in here);
         int timesUsed = difficulty;
         if (timesUsed != 0){
             playerStats.setHealthPoints(100);
