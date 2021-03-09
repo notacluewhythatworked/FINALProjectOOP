@@ -55,6 +55,7 @@ public class View {
     private void movement(){
 //        map.updateOutput();
         enemy.spawnChance();
+
     }
 
     public void combat(){
