@@ -13,8 +13,8 @@ public class Map {
 //    private Enemy grunt = new Enemy();
 //    private String map2[][] = new String[3][3];
     private ArrayList<Room> map;
-    private PlayerMovement playerMovement;
-    private Player playerStats;
+    private PlayerMovement playerMovement = new PlayerMovement();
+    private Player playerStats = new Player();
 
     public void startup(){
         this.map = new ArrayList<Room>();
