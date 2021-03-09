@@ -13,13 +13,14 @@ public class Map {
 //    private Enemy grunt = new Enemy();
 //    private String map2[][] = new String[3][3];
     private ArrayList<Room> map;
-    private PlayerMovement player;
+    private PlayerMovement playerMovement;
+    private Player playerStats;
 
     public void startup(){
         this.map = new ArrayList<Room>();
         List<String> commands = new ArrayList<>(Arrays.asList("1", "2", "3", "n", "s", "e", "w"));
         map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, 2, Direction.NOEXIT, 1));
-        player = new PlayerMovement("player", "you!", map.get(0));
+        playerMovement = new PlayerMovement("player", "you!", map.get(0));
     }
 
     public void startingRoom(){
@@ -38,19 +39,18 @@ public class Map {
     public void healingFountain(int difficulty){
         int timesUsed = difficulty;
         if (timesUsed != 0){
-            //What happens in the healing fountain
-            //the player is healed to full - phil
+            playerStats.setHealthPoints(100);
             timesUsed--;
+            System.out.println("Your health has been restored. You are at " + playerStats.getHealthPoints() + " health.");
         } else {
-            System.out.println("Unfortunately, you've used the healing fountain too many times. Good luck out there.");
+            System.out.println("Unfortunately, you've used the healing fountain too many times. Your health is currently at " + playerStats.getHealthPoints() + ". Good luck out there.");
         }
-        //Reduce the amount of times the room can be entered based on difficulty.
-
     }
 
     public void bossRoom(){
         System.out.println("This is the boss room. Are you sure you're ready for this?");
         ConsoleIO.promptForMenuSelection(new String[]{"Yes", "No"}, false);
+
 
     }
 
@@ -58,9 +58,9 @@ public class Map {
         return "You are currently in the " + " room.";
     }
 
-    int moveTo (PlayerMovement player, Direction direction){
+    int moveTo (PlayerMovement playerMovement, Direction direction){
         //return: a number representing the room the player moved to or NOEXIT
-        Room r = player.getRoom();
+        Room r = playerMovement.getRoom();
         int exit;
 
         switch (direction){
