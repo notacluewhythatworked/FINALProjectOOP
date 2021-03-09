@@ -18,10 +18,10 @@ public class Map {
 
     public void startup(){
         this.map = new ArrayList<Room>();
-        List<String> commands = new ArrayList<>(Arrays.asList("1", "2", "3", "n", "s", "e", "w"));
+        List<Integer> commands = new ArrayList<>(Arrays.asList(1,2,3,4));
         //                      Room name               description                  N           S           E           W
         //Direction.NOEXIT means that you cannot exit the room going that particular way
-        /* index 0 */map.add(new Room("Home Room", "Your starting point", Direction.NOEXIT, Direction.NOEXIT, 2, 1));
+        /* index 0 */map.add(new Room("Starting Room", "Your starting point", Direction.NOEXIT, Direction.NOEXIT, 2, 1));
         /* index 1 */map.add(new Room("", "", Direction.NOEXIT, 5, 0, Direction.NOEXIT));
         /* index 2 */map.add(new Room("", "", Direction.NOEXIT, Direction.NOEXIT, 3, 0));
         /* index 3 */map.add(new Room("", "", Direction.NOEXIT, 4, Direction.NOEXIT, 2));
@@ -37,13 +37,11 @@ public class Map {
         startup();
         System.out.println("\nWelcome to your doom.");
         System.out.println("Which way would you like to move?\n");
-        ConsoleIO.promptForMenuSelection(new String[]{"Left", "Right", "Forward", "Backward"}, false);
+        ConsoleIO.promptForMenuSelection(new String[]{"North", "South", "East", "West"}, false);
     }
 
     public void commonRoom(){
         System.out.println("You enter a common room");
-
-
     }
 
     public void healingFountain(int difficulty){
@@ -64,15 +62,11 @@ public class Map {
 
     }
 
-    public String playerLocation(){
-        return "You are currently in the " + playerMovement.getRoom() + " room.";
-    }
-
     void movePlayerTo(PlayerMovement playerMovement, Room room){
         playerMovement.setRoom(room);
     }
 
-    int moveTo (PlayerMovement playerMovement, Direction direction){
+    public int moveTo (PlayerMovement playerMovement, Direction direction){
         //return: a number representing the room the player moved to or NOEXIT
         Room r = playerMovement.getRoom();
         int exit;
@@ -100,7 +94,7 @@ public class Map {
         return exit;
     }
 
-    void updateOutput(int roomNumber){
+    public void updateOutput(int roomNumber){
         String s;
         if (roomNumber == Direction.NOEXIT){
             s = "That is not an exit. Please try another direction.";

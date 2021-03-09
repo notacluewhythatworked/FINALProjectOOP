@@ -39,13 +39,11 @@ public class Enemy extends AttackAndDefenses {
         int chance = getRng(1,4);
         if(chance < 4){
             //Enemy does not spawn
-            System.out.println("Looks like this room is empty.");
             grounds.commonRoom();
-
+            System.out.println("Looks like this room is empty.");
         } else {
-            System.out.println("Uh oh. There's an enemy in here.");
-            attacka.combat();
             //Enemy spawns
+            attacka.combat();
         }
 
     }

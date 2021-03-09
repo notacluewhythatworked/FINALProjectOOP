@@ -53,13 +53,13 @@ public class View {
     }
 
     private void movement(){
+        map.updateOutput();
         enemy.spawnChance();
-        //inform the player where they are currently and prompt them with possible moves.
     }
 
     public void combat(){
         System.out.println("Enemy detected. What would you like to do?\n");
-        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Use Item","Flee"},true);
+        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Use Item","Flee"},false);
         switch(selection){
             case 1:
                 hero.setAttack(difficult);
