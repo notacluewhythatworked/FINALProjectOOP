@@ -62,7 +62,7 @@ public class View {
 
     private void setDifficulty() {
         System.out.println("Before we start, what type of challenge are you looking for?\n");
-        difficult = ConsoleIO.promptForMenuSelection(new String[]{"Easy", "Medium", "Hard"}, true);
+        difficult = ConsoleIO.promptForMenuSelection(new String[]{"Easy", "Medium", "Hard"}, false);
         hero.setHealthPoints(100);
         bigBad.setHealth(150);
         dragon.setHealth(100);
@@ -121,12 +121,12 @@ public class View {
                 System.out.println(dragon.getHealth());
                 System.out.println(hero.getHealthPoints());
                 if (hero.getHealthPoints() <= 0) {
-                    System.out.println("Snake...Snake!.!SNAAAAAAKE!!!");
+                    System.out.println("\nSnake...Snake!.!SNAAAAAAKE!!!");
                     mainMenu();
                 }
                 break;
             case 2:
-                System.out.println("Oof. That attack was stronger than expected and you died.");
+                System.out.println("Oof. That attack was stronger than expected and you died.\n");
                 mainMenu();
                 break;
         }
@@ -147,7 +147,7 @@ public class View {
     private void movement() {
         switch (enemy.spawnChance()) {
             case 0:
-                System.out.println("Looks like this room is empty.");
+//                System.out.println("Looks like this room is empty.");
                 commonRoom();
                 break;
             case 1:
@@ -172,33 +172,32 @@ public class View {
         }
         loopRoom();
         checkRoom();
-
     }
 
     public void combat() {
         System.out.println("Enemy detected. What would you like to do?\n");
         int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack", "Flee aka enemy's will keel"}, false);
-        System.out.println("enemy health:" + enemy.getHealth());
-        System.out.println("hero health: " + hero.getHealthPoints());
+        System.out.println("Enemy Health: " + enemy.getHealth());
+        System.out.println("Hero Health: " + hero.getHealthPoints());
         switch (selection) {
             case 1:
-                System.out.println("you prepare to attack");
+                System.out.println("\nYou prepare to attack...\n");
                 enemy.setHealth(enemy.getHealth() - hero.attack());
                 hero.setHealthPoints(hero.getHealthPoints() - enemy.attack());
-                System.out.println("Enemy Health " + enemy.getHealth());
+                System.out.println("Enemy Health: " + enemy.getHealth());
                 System.out.println("Player Health: " + hero.getHealthPoints());
                 if (hero.getHealthPoints() <= 0) {
                     System.out.println("Snake...Snake!.!SNAAAAAAKE!!!");
-                    mainMenu();
+                    replayOption();
                 }
                 break;
             case 2:
                 System.out.println("Oof. That attack was stronger than expected and you died.");
-                mainMenu();
+                replayOption();
                 break;
         }
         if (enemy.getHealth() <= 0) {
-            System.out.println("gg no re");
+            System.out.println("\nNice job! You defeated your enemy. gg no re\n");
             hero.setHealthPoints(hero.getHealthPoints() + 20);
             enemy.setHealth(50);
         } else {
@@ -208,7 +207,7 @@ public class View {
 
     public void bossFight() {
         System.out.println("This is it. Make them PAY");
-        int braveChoice = ConsoleIO.promptForMenuSelection(new String[]{"Attack", "perish from existence"}, false);
+        int braveChoice = ConsoleIO.promptForMenuSelection(new String[]{"Attack", "Perish from existence"}, false);
         System.out.println("Boss health:" + bigBad.getHealth());
         System.out.println("Player health: " + hero.getHealthPoints());
         switch (braveChoice) {
@@ -252,5 +251,17 @@ public class View {
                 }
             }
         } while (!meh);
+    }
+
+    public void replayOption(){
+        System.out.println("Unfortunately, you died in that last encounter. Would you like to retry?\n");
+        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Yes"}, true);
+        switch(selection){
+            case 1:
+                mainMenu();
+                break;
+            default:
+                break;
+        }
     }
 }
