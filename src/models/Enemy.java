@@ -4,10 +4,7 @@ import views.View;
 
 public class Enemy extends Attack {
     private int health;
-
     private int attack;
-
-
 
     public int getHealth() {
         return health;
@@ -16,11 +13,6 @@ public class Enemy extends Attack {
     public void setHealth(int health) {
         this.health = health;
     }
-
-
-
-
-
 
     public int getAttack() {
         return attack;

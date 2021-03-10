@@ -17,26 +17,18 @@ public class Room extends Objects {
         return n;
     }
 
-
-
     //south
     public int getS() {
         return s;
     }
-
-
 
     //east
     public int getE() {
         return e;
     }
 
-
-
     //west
     public int getW() {
         return w;
     }
-
-
 }

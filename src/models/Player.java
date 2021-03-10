@@ -4,10 +4,6 @@ public class Player extends Attack {
     private int healthPoints;
     private int attack;
 
-
-
-
-
     public int getHealthPoints() {
         return healthPoints;
     }
@@ -15,8 +11,6 @@ public class Player extends Attack {
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
     }
-
-
 
     public void setAttack(int attack) {
         this.attack = attack;
