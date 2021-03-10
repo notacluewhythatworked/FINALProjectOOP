@@ -2,10 +2,7 @@ package views;
 
 import enums.Direction;
 import lib.ConsoleIO;
-import models.Enemy;
-import models.Items;
-import models.Map;
-import models.Player;
+import models.*;
 
 public class View {
     public Player hero = new Player();
@@ -14,6 +11,7 @@ public class View {
     public Map map = new Map();
     public Enemy bigBad = new Enemy();
     public Enemy dragon = new Enemy();
+    private Attack attack = new Attack();
     private int difficult = 1;
     private int drinks = 1;
 
@@ -66,38 +64,30 @@ public class View {
         System.out.println("Before we start, what type of challenge are you looking for?\n");
         difficult = ConsoleIO.promptForMenuSelection(new String[]{"Easy", "Medium", "Hard"}, true);
         hero.setHealthPoints(100);
+        bigBad.setHealth(150);
+        dragon.setHealth(100);
+        enemy.setHealth(50);
+        hero.setAttack(20);
         switch (difficult) {
             case 1:
                 //easy
-                enemy.setAttack(enemy.getRng(1, 10));
-                enemy.setHealth(50);
-                dragon.setAttack(dragon.getRng(1, 15));
-                dragon.setHealth(100);
-                bigBad.setHealth(150);
-                bigBad.setAttack(bigBad.getRng(1, 20));
-                hero.setAttack(hero.getRng(1, 20));
+                enemy.setAttack(10);
+                dragon.setAttack(15);
+                bigBad.setAttack(20);
                 drinks = 3;
                 break;
             case 2:
                 //medium
-                enemy.setAttack(enemy.getRng(1, 15));
-                enemy.setHealth(50);
-                dragon.setHealth(100);
-                dragon.setAttack(dragon.getRng(1, 20));
-                bigBad.setHealth(150);
-                bigBad.setAttack(bigBad.getRng(1, 25));
-                hero.setAttack(hero.getRng(1, 20));
+                enemy.setAttack(15);
+                dragon.setAttack(20);
+                bigBad.setAttack(25);
                 drinks = 2;
                 break;
             case 3:
                 //hard
-                enemy.setAttack(enemy.getRng(1, 20));
-                enemy.setHealth(50);
-                dragon.setHealth(100);
-                dragon.setAttack(dragon.getRng(1, 23));
-                bigBad.setHealth(150);
-                bigBad.setAttack(bigBad.getRng(1, 28));
-                hero.setAttack(hero.getRng(1, 20));
+                enemy.setAttack(20);
+                dragon.setAttack(23);
+                bigBad.setAttack(28);
                 drinks = 1;
                 break;
         }
@@ -126,8 +116,8 @@ public class View {
         switch (selection) {
             case 1:
                 System.out.println("you roll to seduce the dragon");
-                dragon.setHealth(dragon.getHealth() - hero.getAttack());
-                hero.setHealthPoints(hero.getHealthPoints() - dragon.getAttack());
+                dragon.setHealth(dragon.getHealth() - hero.attack());
+                hero.setHealthPoints(hero.getHealthPoints() - dragon.attack());
                 System.out.println(dragon.getHealth());
                 System.out.println(hero.getHealthPoints());
                 if (hero.getHealthPoints() <= 0) {
@@ -167,10 +157,9 @@ public class View {
     }
 
     public void commonRoom() {
-        System.out.println("You enter a common room");
+        System.out.println("You enter " + map.currentRoom.getName());
         loopRoom();
         checkRoom();
-
     }
 
     public void healingFountain() {
@@ -194,10 +183,10 @@ public class View {
         switch (selection) {
             case 1:
                 System.out.println("you prepare to attack");
-                enemy.setHealth(enemy.getHealth() - hero.getAttack());
-                hero.setHealthPoints(hero.getHealthPoints() - enemy.getAttack());
-                System.out.println(enemy.getHealth());
-                System.out.println(hero.getHealthPoints());
+                enemy.setHealth(enemy.getHealth() - hero.attack());
+                hero.setHealthPoints(hero.getHealthPoints() - enemy.attack());
+                System.out.println("Enemy Health " + enemy.getHealth());
+                System.out.println("Player Health: " + hero.getHealthPoints());
                 if (hero.getHealthPoints() <= 0) {
                     System.out.println("Snake...Snake!.!SNAAAAAAKE!!!");
                     mainMenu();
@@ -225,8 +214,8 @@ public class View {
         switch (braveChoice) {
             case 1:
                 System.out.println("You pull your sword out with a loud 'shwing'");
-                bigBad.setHealth(bigBad.getHealth() - hero.getAttack());
-                hero.setHealthPoints(hero.getHealthPoints() - bigBad.getAttack());
+                bigBad.setHealth(bigBad.getHealth() - hero.attack());
+                hero.setHealthPoints(hero.getHealthPoints() - bigBad.attack());
                 System.out.println("boss health: " + bigBad.getHealth());
                 System.out.println("hero health: " + hero.getHealthPoints());
                 if (hero.getHealthPoints() <= 0) {
@@ -245,8 +234,6 @@ public class View {
         } else {
             bossFight();
         }
-
-
     }
 
     public void loopRoom() {

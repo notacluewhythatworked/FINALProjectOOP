@@ -33,4 +33,7 @@ public class Enemy extends Attack {
         }
 
     }
+    public int attack(){
+        return getRng(1,attack);
+    }
 }

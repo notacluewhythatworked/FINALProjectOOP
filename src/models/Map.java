@@ -143,7 +143,7 @@ public class Map {
             return true;
         } else {
             currentRoom = map.get(roomNumber);
-            System.out.println("You are currently in the " + currentRoom.getName() + ". ");
+            //System.out.println("You are currently in the " + currentRoom.getName() + ". ");
             return false;
         }
     }

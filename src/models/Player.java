@@ -17,8 +17,11 @@ public class Player extends Attack {
     }
 
     public int getAttack() {
-
         return attack;
+    }
+
+    public int attack(){
+        return getRng(1,attack);
     }
 
 
