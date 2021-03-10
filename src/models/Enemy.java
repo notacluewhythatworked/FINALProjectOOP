@@ -33,17 +33,14 @@ public class Enemy extends AttackAndDefenses {
         this.defense = defense;
     }
 
-    public void spawnChance(){
-        View attacka = new View();
-        Map grounds = new Map();
+    public int spawnChance(){
         int chance = getRng(1,4);
-        if(chance < 4){
+        if(chance < 3){
             //Enemy does not spawn
-            grounds.commonRoom();
-            System.out.println("Looks like this room is empty.");
+            return 0;
         } else {
             //Enemy spawns
-            attacka.combat();
+            return 1;
         }
 
     }

@@ -36,7 +36,17 @@ public class Map {
         startup();
         System.out.println("\nWelcome to your doom.");
         System.out.println("Which way would you like to move?\n");
-        ConsoleIO.promptForMenuSelection(new String[]{"North", "South", "East", "West"}, false);
+         int shmoove=ConsoleIO.promptForMenuSelection(new String[]{"North", "South", "East", "West"}, false);
+        switch (shmoove){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
 
     }
 
@@ -75,6 +85,7 @@ public class Map {
         switch (direction){
             case NORTH:
                 exit = r.getN();
+
                 break;
             case SOUTH:
                 exit = r.getS();
