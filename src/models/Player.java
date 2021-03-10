@@ -19,7 +19,6 @@ public class Player extends AttackAndDefenses {
 
 
     public void setAttack(int attack) {
-        getRng(1,20);
         this.attack = attack;
     }
 

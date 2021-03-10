@@ -149,12 +149,10 @@ public class View {
         int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Use Item","Flee"},false);
         switch(selection){
             case 1:
-                hero.setAttack(difficult);
-                movement();
+                System.out.println("you prepare to attack");
                 break;
             case 2:
                 bag.healthItems();
-                movement();
                 break;
             case 3:
                 System.out.println("Oof. That attack was stronger than expected and you died.");
