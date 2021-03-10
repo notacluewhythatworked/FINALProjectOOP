@@ -135,7 +135,7 @@ public class View {
             hero.setHealthPoints(hero.getHealthPoints() + 20);
             dragon.setHealth(100);
         } else {
-            combat();
+            miniboss();
         }
     }
 
