@@ -1,6 +1,6 @@
 package models;
 
-public class Player extends AttackAndDefenses {
+public class Player extends Attack {
     private int healthPoints;
     private int attack;
 

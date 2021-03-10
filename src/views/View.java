@@ -13,7 +13,7 @@ public class View {
     public Enemy enemy = new Enemy();
     public Map map = new Map();
     public Enemy bigBad = new Enemy();
-//    public int pointer = ConsoleIO.promptForMenuSelection(new String[]{"North", "South", "East", "West"}, false);
+    public Enemy dragon = new Enemy();
     private int difficult = 1;
     private int drinks = 1;
 
@@ -35,11 +35,9 @@ public class View {
                 healingFountain();
                 break;
             case "Miniboss Room":
-                //make miniboss
-                commonRoom();
+                dragonKeep();
                 break;
             case "Boss Room":
-                //Make boss
                 bossRoom();
                 break;
             default:
@@ -73,7 +71,9 @@ public class View {
                 //easy
                 enemy.setAttack(enemy.getRng(1,10));
                 enemy.setHealth(50);
-                bigBad.setHealth(100);
+                dragon.setAttack(dragon.getRng(1,15));
+                dragon.setHealth(100);
+                bigBad.setHealth(150);
                 bigBad.setAttack(bigBad.getRng(1,20));
                 hero.setAttack(hero.getRng(1,20)); //PLACEHOLDER VALUE
                 drinks =3;
@@ -82,7 +82,9 @@ public class View {
                 //medium
                 enemy.setAttack(enemy.getRng(1,15));
                 enemy.setHealth(50);
-                bigBad.setHealth(100);
+                dragon.setHealth(100);
+                dragon.setAttack(dragon.getRng(1,20));
+                bigBad.setHealth(150);
                 bigBad.setAttack(bigBad.getRng(1,25));
                  //PLACEHOLDER VALUE
                 hero.setAttack(hero.getRng(1,20)); //PLACEHOLDER VALUE
@@ -92,8 +94,10 @@ public class View {
                 //hard
                 enemy.setAttack(enemy.getRng(1,20));
                 enemy.setHealth(50);
-                bigBad.setHealth(100);
-                bigBad.setAttack(bigBad.getRng(6,28));
+                dragon.setHealth(100);
+                dragon.setAttack(dragon.getRng(1,23));
+                bigBad.setHealth(150);
+                bigBad.setAttack(bigBad.getRng(1,28));
                 hero.setAttack(hero.getRng(1,20)); //PLACEHOLDER VALUE
                 drinks =1;
                 break;
@@ -114,6 +118,41 @@ public class View {
                 break;
         }
 
+    }
+    public void miniboss(){
+        System.out.println("Enemy detected. What would you like to do?\n");
+        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","attempt to flee"},false);
+        System.out.println("enemy health:" + dragon.getHealth());
+        System.out.println("hero health: "+hero.getHealthPoints());
+        switch(selection){
+            case 1:
+                System.out.println("you roll to seduce the dragon");
+                dragon.setHealth(dragon.getHealth() - hero.getAttack());
+                hero.setHealthPoints(hero.getHealthPoints() - dragon.getAttack());
+                System.out.println(dragon.getHealth());
+                System.out.println(hero.getHealthPoints());
+                if(hero.getHealthPoints() <= 0){
+                    System.out.println("Snake...Snake!.!SNAAAAAAKE!!!");
+                    mainMenu();
+                }
+                break;
+            case 2:
+                System.out.println("Oof. That attack was stronger than expected and you died.");
+                mainMenu();
+                break;
+
+        }
+        if(dragon.getHealth() <= 0 ){
+            System.out.println("gg no re");
+            hero.setHealthPoints(hero.getHealthPoints()+ 20);
+            dragon.setHealth(100);
+        }else{
+            combat();
+        }
+    }
+    public void dragonKeep(){
+        System.out.println("the dragon looms above you");
+        miniboss();
     }
 
     private void movement() {
@@ -192,6 +231,8 @@ public class View {
                 System.out.println("you pull your sword out with a loud shing");
                 bigBad.setHealth(bigBad.getHealth()- hero.getAttack());
                 hero.setHealthPoints(hero.getHealthPoints()- bigBad.getAttack());
+                System.out.println("boss health: "+ bigBad.getHealth());
+                System.out.println("hero health: "+ hero.getHealthPoints());
                 if(hero.getHealthPoints() <= 0){
                     System.out.println("K.O");
                     mainMenu();

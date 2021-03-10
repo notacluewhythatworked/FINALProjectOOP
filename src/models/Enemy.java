@@ -2,9 +2,9 @@ package models;
 
 import views.View;
 
-public class Enemy extends AttackAndDefenses {
+public class Enemy extends Attack {
     private int health;
-    private int damage;
+
     private int attack;
 
 
@@ -17,21 +17,9 @@ public class Enemy extends AttackAndDefenses {
         this.health = health;
     }
 
-    public int getDamage() {
-        return damage;
-    }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
 
-//    public int getDefense() {
-//        return defense;
-//    }
-//
-//    public void setDefense(int defense) {
-//        this.defense = defense;
-//    }
+
 
 
     public int getAttack() {
@@ -44,7 +32,7 @@ public class Enemy extends AttackAndDefenses {
 
     public int spawnChance(){
         int chance = getRng(1,4);
-        if(chance <= 3){
+        if(chance < 3){
             //Enemy does not spawn
             return 0;
         } else {
