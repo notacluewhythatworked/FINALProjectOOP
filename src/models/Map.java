@@ -31,50 +31,6 @@ public class Map {
         currentRoom= new Room(map.get(0).getName(), "you!", map.get(0).getN(),map.get(0).getS(),map.get(0).getE(),map.get(0).getW());
     }
 
-    //public Boolean startingRoom(){
-    //    System.out.println("\nWelcome to your doom.");
-    //    System.out.println("Which way would you like to move?\n");
-    //     int shmoove=ConsoleIO.promptForMenuSelection(new String[]{"North", "South", "East", "West"}, false);
-//  //       boolean wall = true;
-    //
-    //    switch (shmoove){
-    //        case 1:
-    //            return goN();
-    //        case 2:
-    //            return goS();
-    //        case 3:
-    //            return goE();
-    //        case 4:
-    //            return goW();
-    //        default:
-    //            return null;
-    //    }
-    //
-    //}
-
-    //public void commonRoom(){
-    //    moveTo(I dont know what info to input in here);
-    //    System.out.println("You enter a common room");
-    //    System.out.println("lets move out\n");
-    //}
-
-    //public void healingFountain(int difficulty){
-    //    //moveTo(put info in here);
-    //    int timesUsed = difficulty;
-    //    if (timesUsed != 0){
-    //        playerStats.setHealthPoints(100);
-    //        timesUsed--;
-    //        System.out.println("Your health has been restored. You are at " + playerStats.getHealthPoints() + " health.");
-    //    } else {
-    //        System.out.println("Unfortunately, you've used the healing fountain too many times. Your health is currently at " + playerStats.getHealthPoints() + ". Good luck out there.");
-    //    }
-    //}
-
-    //public void bossRoom(){
-    //    System.out.println("This is the boss room. Are you sure you're ready for this?");
-    //    ConsoleIO.promptForMenuSelection(new String[]{"Yes", "No"}, false);
-    //}
-
     //returns the room user is going to
     public int moveTo(Room room, Direction direction){
         //return: a number representing the room the player moved to or NOEXIT
@@ -98,43 +54,12 @@ public class Map {
                 exit = Direction.NOEXIT; //returns an error message and keeps the player in the same room
                 break;
         }
-        //if (exit != Direction.NOEXIT){
-        //   movePlayerTo(playerMovement, map.get(exit));
-        //}
         return exit;
     }
-
-    //public String processCommand(){
-    //   return "";
-    //}
-
-    //public void movePlayerTo(PlayerMovement playerMovement, Room room){
-    //    playerMovement.setRoom(room);
-    //}
-
-    //public int movePlayerTo(Direction direction){
-    //   return moveTo(playerMovement, direction);
-    //}
 
     public boolean goDirection(Direction direction) {
          return updateOutput(moveTo(currentRoom, direction));
     }
-
-    //public boolean goN(){
-    //    return updateOutput(moveTo(currentRoom, Direction.NORTH));
-    //}
-    //
-    //public boolean goS(){
-    //     return updateOutput(moveTo(currentRoom, Direction.SOUTH));
-    //}
-    //
-    //public boolean goE(){
-    //    return updateOutput(moveTo(currentRoom, Direction.EAST));
-    //}
-    //
-    //public boolean goW(){
-    //     return updateOutput(moveTo(currentRoom, Direction.WEST));
-    //}
 
     //if true there is a wall
     public boolean updateOutput(int roomNumber){
@@ -147,14 +72,4 @@ public class Map {
             return false;
         }
     }
-
-
-//    public void mapView() {
-//        //This should be almost identical to the connect four board, but populated with locations.
-//        for(int i = 0 ; i < 6; i++){
-//            for (int j = 0; j < 7; j++) {
-//                map[i][j] = " ";
-//            }
-//        }
-//    }
 }

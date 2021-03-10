@@ -22,8 +22,6 @@ public class View {
         System.out.println("Which way would you like to move?\n");
         loopRoom();
         checkRoom();
-
-
     }
 
     public void checkRoom() {
@@ -42,7 +40,6 @@ public class View {
                 commonRoom();
                 break;
         }
-
     }
 
     public Boolean promptThenMove() {
@@ -109,25 +106,26 @@ public class View {
     }
 
     public void miniboss() {
-        System.out.println("Enemy detected. What would you like to do?\n");
-        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack", "attempt to flee"}, false);
+        System.out.println("\nEnemy detected. What would you like to do?\n");
+        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack", "Attempt to flee"}, false);
         System.out.println("Enemy health:" + dragon.getHealth());
         System.out.println("Hero health: " + hero.getHealthPoints());
         switch (selection) {
             case 1:
-                System.out.println("you roll to seduce the dragon");
+                System.out.println("\nYou roll to seduce the dragon");
                 dragon.setHealth(dragon.getHealth() - hero.attack());
                 hero.setHealthPoints(hero.getHealthPoints() - dragon.attack());
-                System.out.println(dragon.getHealth());
-                System.out.println(hero.getHealthPoints());
+                System.out.println("Dragon health: " + dragon.getHealth());
+                System.out.println("Hero health: " + hero.getHealthPoints());
                 if (hero.getHealthPoints() <= 0) {
                     System.out.println("\nSnake...Snake!.!SNAAAAAAKE!!!");
-                    mainMenu();
+                    replayOption();
                 }
+                miniboss();
                 break;
             case 2:
                 System.out.println("Oof. That attack was stronger than expected and you died.\n");
-                mainMenu();
+                replayOption();
                 break;
         }
         if (dragon.getHealth() <= 0) {
@@ -229,7 +227,7 @@ public class View {
         if (bigBad.getHealth() <= 0) {
             System.out.println("You have freed the innocent souls from this dungeon. I'm proud of you son\n");
             System.out.println("Thanks so much for playing our game");
-            mainMenu();
+            replayOption();
         } else {
             bossFight();
         }
@@ -253,10 +251,10 @@ public class View {
         } while (!meh);
     }
 
-    public void replayOption(){
+    public void replayOption() {
         System.out.println("Unfortunately, you died in that last encounter. Would you like to retry?\n");
         int selection = ConsoleIO.promptForMenuSelection(new String[]{"Yes"}, true);
-        switch(selection){
+        switch (selection) {
             case 1:
                 mainMenu();
                 break;
