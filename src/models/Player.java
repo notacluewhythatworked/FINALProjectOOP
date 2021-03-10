@@ -1,9 +1,9 @@
 package models;
 
-public class Player extends AttackAndDefenses {
+public class Player extends Attack {
     private int healthPoints;
     private int attack;
-    private int defense;
+
 
 
 
@@ -19,17 +19,13 @@ public class Player extends AttackAndDefenses {
 
 
     public void setAttack(int attack) {
-        getRng(1,20);
         this.attack = attack;
     }
 
-//    public int getDefense() {
-//        return defense;
-//    }
+    public int getAttack() {
 
-    public void setDefense(int defense) {
-        getRng(1,20);
-        this.defense = defense;
+        return attack;
     }
+
 
 }
