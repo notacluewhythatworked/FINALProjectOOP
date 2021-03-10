@@ -12,6 +12,7 @@ public class View {
     public Items bag = new Items();
     public Enemy enemy = new Enemy();
     public Map map = new Map();
+    public Enemy bigBad = new Enemy();
 //    public int pointer = ConsoleIO.promptForMenuSelection(new String[]{"North", "South", "East", "West"}, false);
     private int difficult = 1;
     private int drinks = 1;
@@ -70,26 +71,30 @@ public class View {
         switch(difficult){
             case 1:
                 //easy
-                enemy.setDamage(25);
-                enemy.setHealth(50); //PLACEHOLDER VALUE
-                enemy.setDefense(25); //PLACEHOLDER VALUE
-                hero.setAttack(20); //PLACEHOLDER VALUE
+                enemy.setAttack(enemy.getRng(1,10));
+                enemy.setHealth(50);
+                bigBad.setHealth(100);
+                bigBad.setAttack(bigBad.getRng(1,20));
+                hero.setAttack(hero.getRng(1,20)); //PLACEHOLDER VALUE
                 drinks =3;
                 break;
             case 2:
                 //medium
-                enemy.setDamage(50);
-                enemy.setHealth(75); //PLACEHOLDER VALUE
-                enemy.setDefense(50); //PLACEHOLDER VALUE
-                hero.setAttack(25); //PLACEHOLDER VALUE
+                enemy.setAttack(enemy.getRng(1,15));
+                enemy.setHealth(50);
+                bigBad.setHealth(100);
+                bigBad.setAttack(bigBad.getRng(1,25));
+                 //PLACEHOLDER VALUE
+                hero.setAttack(hero.getRng(1,20)); //PLACEHOLDER VALUE
                 drinks =2;
                 break;
             case 3:
                 //hard
-                enemy.setDamage(75);
-                enemy.setHealth(100); //PLACEHOLDER VALUE
-                enemy.setDefense(75); //PLACEHOLDER VALUE
-                hero.setAttack(30); //PLACEHOLDER VALUE
+                enemy.setAttack(enemy.getRng(1,20));
+                enemy.setHealth(50);
+                bigBad.setHealth(100);
+                bigBad.setAttack(bigBad.getRng(6,28));
+                hero.setAttack(hero.getRng(1,20)); //PLACEHOLDER VALUE
                 drinks =1;
                 break;
         }
@@ -101,10 +106,11 @@ public class View {
         fin = ConsoleIO.promptForMenuSelection(new String[]{"Yes", "No"}, false);
         switch (fin){
             case 1:
-                //fight boss
+                bossFight();
                 break;
             case 2:
-                //stay in previous room
+                loopRoom();
+                checkRoom();
                 break;
         }
 
@@ -146,20 +152,65 @@ public class View {
 
     public void combat(){
         System.out.println("Enemy detected. What would you like to do?\n");
-        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Use Item","Flee"},false);
+        int selection = ConsoleIO.promptForMenuSelection(new String[]{"Attack","Flee aka enemy's will keel"},false);
+        System.out.println("enemy health:" + enemy.getHealth());
+        System.out.println("hero health: "+hero.getHealthPoints());
         switch(selection){
             case 1:
                 System.out.println("you prepare to attack");
+                enemy.setHealth(enemy.getHealth() - hero.getAttack());
+
+                hero.setHealthPoints(hero.getHealthPoints() - enemy.getAttack());
+                System.out.println(enemy.getHealth());
+                System.out.println(hero.getHealthPoints());
+                if(hero.getHealthPoints() <= 0){
+                    System.out.println("Snake...Snake!.!SNAAAAAAKE!!!");
+                    mainMenu();
+                }
                 break;
             case 2:
-                bag.healthItems();
-                break;
-            case 3:
                 System.out.println("Oof. That attack was stronger than expected and you died.");
                 mainMenu();
                 break;
 
         }
+        if(enemy.getHealth() <= 0 ){
+            System.out.println("gg no re");
+            hero.setHealthPoints(hero.getHealthPoints()+ 20);
+            enemy.setHealth(50);
+        }else{
+            combat();
+        }
+    }
+    public void bossFight(){
+        System.out.println("This is it make them PAY");
+        int braveChoice = ConsoleIO.promptForMenuSelection(new String[]{"Attack","perish from existence"},false);
+        System.out.println("Boss health:" +bigBad.getHealth());
+        System.out.println("Player health: "+ hero.getHealthPoints());
+        switch(braveChoice){
+            case 1:
+                System.out.println("you pull your sword out with a loud shing");
+                bigBad.setHealth(bigBad.getHealth()- hero.getAttack());
+                hero.setHealthPoints(hero.getHealthPoints()- bigBad.getAttack());
+                if(hero.getHealthPoints() <= 0){
+                    System.out.println("K.O");
+                    mainMenu();
+                }
+
+                break;
+            case 2:
+                System.out.println("you try to flee but bigBad pummels you to death... oof");
+                break;
+        }
+        if(bigBad.getHealth() <= 0 ){
+            System.out.println("you have freed the innocent souls from this dungeon im proud of you son\n");
+            System.out.println("Thanks so much for playing our game");
+            mainMenu();
+        }else{
+            bossFight();
+        }
+
+
     }
     public void loopRoom(){
         boolean meh;

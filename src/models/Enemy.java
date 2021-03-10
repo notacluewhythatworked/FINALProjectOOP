@@ -5,7 +5,7 @@ import views.View;
 public class Enemy extends AttackAndDefenses {
     private int health;
     private int damage;
-    private int defense;
+    private int attack;
 
 
 
@@ -25,17 +25,26 @@ public class Enemy extends AttackAndDefenses {
         this.damage = damage;
     }
 
-    public int getDefense() {
-        return defense;
+//    public int getDefense() {
+//        return defense;
+//    }
+//
+//    public void setDefense(int defense) {
+//        this.defense = defense;
+//    }
+
+
+    public int getAttack() {
+        return attack;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
+    public void setAttack(int attack) {
+        this.attack = attack;
     }
 
     public int spawnChance(){
         int chance = getRng(1,4);
-        if(chance < 3){
+        if(chance <= 3){
             //Enemy does not spawn
             return 0;
         } else {
